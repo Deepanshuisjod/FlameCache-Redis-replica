@@ -16,11 +16,9 @@ def main():
 
         req_msg = client_socket.recv(1024).decode('utf-8')
         resp_msg = "+PONG\r\n"
-
-        if req_msg == 'PING\r\n':
-            client_socket.send(resp_msg.encode('utf-8'))
-        else:
-            print(f"Received unknown message: {req_msg}")
+        count_ping = req_msg.count('PING') 
+        resp_msg = count_ping * resp_msg
+        client_socket.send(resp_msg.encode('utf-8'))
 
         client_socket.close()
 
