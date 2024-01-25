@@ -8,7 +8,7 @@ rclient = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 def main():
     rclient.connect((SERVER_IP, SERVER_PORT))
 
-    ping_msg = "PING\r\n"
+    ping_msg = "PING\nPING"  
     rclient.send(ping_msg.encode('utf-8'))
 
     resp_msg = rclient.recv(1024).decode('utf-8') 
